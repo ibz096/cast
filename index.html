@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Google Cast Chrome Sender SDK: Hello Videos</title>
+<link rel="stylesheet" type="text/css" href="css/test.css">
+<script type="text/javascript" src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js"></script>
+<script src="helloVideos.js"></script>
+</head>
+<body>
+  <div>
+    <div id="mediaInterface">
+      <h2>Google Cast Chrome Sender SDK: Hello Videos</h2>
+      <div id="customMedia">
+        <h3>Choose a media below or enter your own media URL to cast</h3>
+        <span style="font-weight:bold; color:#0000cc;">Enter custom media URL</span>: <input type="text" name="customMediaURL" value="" size="70" id="customMediaURL">
+        <br>
+        <span style="font-weight:bold; color:#0000cc;">Enter subtitle File/URL (optional)</span>:
+        <input type="text" name="customSubtitleURL" value="" id="customSubtitleURL">
+        <br><br>
+        <input type="submit" name="loadCustomMeida" value="Load Custom Media" onclick="loadCustomMedia();">
+
+      </div>
+      <br>
+      <div id="imageDiv">
+        <div>
+           <input type="radio" checked name="media" onclick="selectMedia(0);">Big Buck Bunny MP4<br>
+           <input type="radio" name="media" onclick="selectMedia(1);">Elephants Dream MP4<br>
+           <input type="radio" name="media" onclick="selectMedia(2);">Tears of Steel MOV<br>
+           <input type="radio" name="media" onclick="selectMedia(3);">Reel MP4<br>
+           <input type="radio" name="media" onclick="selectMedia(4);">Google I/O 2011 MP3<br>
+        </div>
+        <div>
+           <img src="images/bunny.jpg" width="250" id="thumb">
+           <img src="images/cast_icon_idle.png" id="casticon" width="30">
+        </div>
+      </div>
+
+      <div id="mediaController">
+        <div>
+          <button onclick="launchApp()">Launch app</button>
+          <button onclick="stopApp()">Stop app</button>
+          <button id="joinsessionbyid" style="float:right; display:none;" onclick="joinSessionBySessionId()">Join by session ID</button>
+          <button onclick="loadMedia()">Load media</button>
+          <button id="playpauseresume" onclick="playMedia()">Play</button>
+          <button onclick="stopMedia()">Stop media</button>
+          <button id="muteunmute" onclick="muteMedia();">Mute media</button>
+          <button id="getstatus" onclick="getMediaStatus();">Get media status</button>
+        </div>
+
+        <div>
+	   <input class="vertical" type="range" min="0" max="100" step="1" onmouseup="setReceiverVolume(1-this.value/100,false);">
+           <div class="vertical">Volume control</div>
+        </div>
+      </div>
+    </div>
+    <div id="playerStatus">
+      <div>
+        Progress : <input id="progress" type="range" min="1" max="100" value="1" step="1" onmouseup="seekMedia(this.value);">
+        <span id="duration"></span>
+        <div id="progress_tick"></div>
+      </div>
+      <div>
+        State : <span id="playerstate">IDLE</span>
+      </div>
+
+      <div>
+        <textarea rows="20" cols="70" id="debugmessage">
+        </textarea>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
